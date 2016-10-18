@@ -1,0 +1,24 @@
+Vertica BDD orientée colonnes : différe dans la manière de stocker les données.
+Stock donc les données par colonne.
+En ligne:  1,Durant, Jacques,40000;2,Dupont, Marie,50000;
+En colonne:  1,2,3;Durant,Dupont,Martin;
+Pour ajouter une colonne c'est plus rapide (ajout d'une colonne à la toute fin).
+Exemple ajout colonne Prénom:
+En ligne: 1,Durant,Jacques,40000,'value_0_Prénom';2,Dupont, Marie,50000,'value_1_nvelle_Prénom';
+En colonne: 1,2,3;Durant,Dupont,Martin;"Prénom_1,Prénom_2","Prénom_3";
+Mais si ajout d'une ligne dans une bdd orientée colonnes c'est plus difficile. 
+Donc en fait ca dépend de l'utilisation que t'en fais, c'est opti selon ce que tu fais.
+Tu utilises les requêtes SQL de la même manière que pour une BDD orientée ligne et 
+vertica automatise la structuration de la BDD. En fait c'est automatique donc tu t'en fous.
+Codé en C++, java, R. Tu peux coder tes propres fonctions.
+
+
+Txt: Je m'appelle ginoux ginoux ginoux je.
+Index: 
+	1,7: Je
+	2: m'
+	3: appelle
+	4,5,6: ginoux
+Liste la place des mots (coord) dans une phrase.
+
+Flavor: type de configuration

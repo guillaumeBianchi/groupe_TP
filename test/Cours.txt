@@ -1,4 +1,4 @@
-Vertica BDD orientée colonnes : différe dans la manière de stocker les données.
+﻿Vertica BDD orientée colonnes : différe dans la manière de stocker les données.
 Stock donc les données par colonne.
 En ligne:  1,Durant, Jacques,40000;2,Dupont, Marie,50000;
 En colonne:  1,2,3;Durant,Dupont,Martin;
@@ -12,6 +12,7 @@ Tu utilises les requêtes SQL de la même manière que pour une BDD orientée li
 vertica automatise la structuration de la BDD. En fait c'est automatique donc tu t'en fous.
 Codé en C++, java, R. Tu peux coder tes propres fonctions.
 
+dzqdqzdzq
 
 Txt: Je m'appelle ginoux ginoux ginoux je.
 Index: 

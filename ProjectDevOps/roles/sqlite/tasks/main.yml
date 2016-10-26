@@ -1,0 +1,4 @@
+---
+# tasks file for sqlite
+- name: Install sqlite
+  apt: name=sqlite3 state=latest

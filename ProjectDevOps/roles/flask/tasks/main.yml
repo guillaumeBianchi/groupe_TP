@@ -1,0 +1,4 @@
+---
+# tasks file for flask
+- name: Install flask
+  pip: name=flask

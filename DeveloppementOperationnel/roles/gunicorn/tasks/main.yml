@@ -1,0 +1,4 @@
+---
+# tasks file for gunicorn
+- name: Install gunicorn
+  pip: name=gunicorn

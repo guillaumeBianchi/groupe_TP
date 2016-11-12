@@ -1,0 +1,59 @@
+---
+- hosts: all
+
+  vars:
+    # Username
+    user: vagrant
+
+  ######################################
+  # Rôles
+  ######################################
+
+  roles:
+    - { role: "flask" }
+    - { role: "gunicorn" }
+    - { role: "nginx" }
+    - { role: "supervisor" }
+    - { role: "sqlite" }
+
+  ######################################
+  # Configs déployement appli flask
+  ######################################
+  tasks:
+    - name: Create virtualenv with requirements
+      pip: name=flask virtualenv=/home/{{ user }}/env
+      remote_user: "{{ user }}"
+
+    - name: Activate the environment
+      become: yes
+      shell: . /home/{{ user }}/env/bin/activate
+
+    - name: Create Project folder
+      copy: src=flaskProject
+            dest=/home/{{ user }}/
+
+    - name: Setup Nginx config for our app 1/2
+      template: src=roles/nginx/templates/flaskProject
+                dest=/etc/nginx/sites-available/flaskProject
+
+    #- name: Setup Gunicorn config
+    #  template: src=roles/gunicorn/templates/gunicorn.conf
+    #            dest=/home/{{ user }}/flaskProject/gunicorn.conf.py
+    #  remote_user: "{{ user }}"
+    #  notify: restart supervisor
+
+    - name: Setup Nginx config for our app 2/2
+      command: sudo ln -s /etc/nginx/sites-available/flask_project /etc/nginx/sites-enabled/flask_project
+      notify: restart nginx
+
+    - name: Setup supervisor config (to manage gunicorn)
+      template: src=roles/supervisor/templates/flaskdeploy.conf
+                dest=/etc/supervisor/conf.d/flask_project.conf
+      notify: restart supervisor
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted enabled=yes
+
+    - name: restart supervisor
+      service: name=supervisor state=restarted enabled=yes

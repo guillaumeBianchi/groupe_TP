@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>donkeykong.png</file>
+        <file>barrel.png</file>
+        <file>Mario.png</file>
+        <file>ladder.png</file>
+        <file>ground.png</file>
+        <file>background.png</file>
+    </qresource>
+</RCC>

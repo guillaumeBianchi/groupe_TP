@@ -1,0 +1,7 @@
+---
+# tasks file for supervisor
+- name: Install Supervisor
+  apt: name=supervisor state=latest
+
+- name: Start supervisor service
+  service: name=supervisor state=started enabled=true
